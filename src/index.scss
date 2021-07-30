@@ -79,3 +79,16 @@
     font-weight: bold;
   }
 }
+
+.pool-table {
+  td:nth-child(1) {
+    width: 150px;
+    font-weight: bold;
+  }
+}
+
+.swap-button-group {
+  button {
+    min-width: 80px;
+  }
+}

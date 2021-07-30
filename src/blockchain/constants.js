@@ -24,5 +24,10 @@ export const addresses = {
   usdt: {
     56: '0x55d398326f99059fF775485246999027B3197955',
     97: '0xa11c8d9dc9b66e209ef60f0c8d969d3cd988782c'
+  },
+
+  pool: {
+    56: '0xE37B3e50391259650B08Df023425Bcdcd323c160',
+    97: '0x659361EcAFe9d02d0ACE089F155bA40aF5CD49d9'
   }
 }
