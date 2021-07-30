@@ -1,25 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import * as utils from './blockchain/utils';
+import { Container } from 'react-bootstrap';
+import Header from './components/header';
+import Dashboard from './pages/dashboard';
+import VegaProvider from './contexts/VegaProvider';
+import { useWallet, UseWalletProvider } from 'use-wallet';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Providers>
+      <Container>
+        <Header/>
+        <Dashboard/>
+      </Container>
+    </Providers>
   );
+}
+
+const Providers = ({ children }) => {
+
+  const {
+    chainId,
+    rpcUrl
+  } = utils.getEthChainInfo();
+
+  return (
+    <UseWalletProvider
+      chainId={chainId}
+      connectors={{
+        walletconnect: { rpcUrl }
+      }}
+    >
+      <VegaProvider>
+        {children}
+      </VegaProvider>
+    </UseWalletProvider>
+  )
 }
 
 export default App;
