@@ -1,22 +1,23 @@
-import React, { createContext, useCallback, useEffect, useState } from 'react';
+import { createContext, useCallback, useEffect, useState } from 'react';
 
 import { useWallet } from 'use-wallet';
 import { Vega } from '../../blockchain';
 
 const CHECK_WALLET_STATUS_REFRESH_RATE = 2 * 1000;
 
-export const Context = createContext({
-  vega: undefined,
+interface VegaContext{
+  vega: Vega | null;
+}
+
+export const Context = createContext<VegaContext>({
+  vega: null,
 });
 
 const VegaProvider = ({ children }) => {
   const wallet = useWallet();
   const { account, connector, status, connect, ethereum, reset } = wallet;
-  const [userAccount, setUserAccount] = useState();
-  const [vega, setVega] = useState();
-
-  window.vega = vega;
-  window.eth = ethereum;
+  const [userAccount, setUserAccount] = useState<any|null>(null);
+  const [vega, setVega] = useState<Vega|null>(null);
 
   const checkLocalUserAccount = useCallback(async () => {
     if (!localStorage.getItem('account')) {

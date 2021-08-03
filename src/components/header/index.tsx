@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {Container, Navbar, Nav, Dropdown, Button} from 'react-bootstrap';
 import logo from '../../assets/images/logo.png';
 import walleticon from '../../assets/images/walleticon.png';
-import downblue from '../../assets/images/downblue.png';
 import { useWallet } from 'use-wallet';
 import ConnectModal from '../modals/ConnectModal';
 import * as utils from '../../blockchain/utils';
 import useVega from '../../hooks/useVega';
 
-function Header(props) {
+function Header() {
 
   const [modalShow, setModalShow] = useState(false);
   const {account} = useWallet();
   const vega = useVega();
 
   const handleDisconnect = () => {
-    vega.disconnect();
+    vega?.disconnect();
   };
 
   return (

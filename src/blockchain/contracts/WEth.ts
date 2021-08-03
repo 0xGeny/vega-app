@@ -5,8 +5,7 @@ import { addresses } from '../constants';
 
 class WEth extends Contract {
   constructor(options) {
-    super(options, "weth");
-    this.contract = new this.web3.eth.Contract(abi, addresses.weth[this.networkId]);
+    super(options, "weth", abi, addresses.weth[options.networkId]);
   }
 }
 

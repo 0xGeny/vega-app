@@ -5,8 +5,7 @@ import { addresses } from '../constants';
 
 class StablePool extends Contract {
   constructor(options) {
-    super(options, "stable-pool");
-    this.contract = new this.web3.eth.Contract(abi, addresses.pool[this.networkId]);
+    super(options, "stable-pool", abi, addresses.pool[options.networkId]);
   }
 }
 

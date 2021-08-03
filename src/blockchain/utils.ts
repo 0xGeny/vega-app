@@ -3,7 +3,7 @@ import { BigNumber } from "bignumber.js";
 import * as constants from './constants';
 import * as config from  '../config';
 
-export const createWeb3 = (provider, options = {}) => {
+export const createWeb3 = (provider: string | object, options: any = {}) => {
 
   var realProvider;
 
@@ -27,7 +27,7 @@ export const createWeb3 = (provider, options = {}) => {
 }
 
 export const getBrowserWeb3 = () => {
-  let web3 = null;
+  let web3: Web3 | null = null;
   if (window.ethereum) {
     web3 = createWeb3(window.ethereum);
   }
@@ -91,13 +91,6 @@ export const blokcNumberToTimestamp = async (blockNumber) => {
 export const blokcNumberToDate = async (blockNumber) => {
   const timestamp = await blokcNumberToTimestamp(blockNumber);
   return timestampToDate(timestamp);
-}
-
-export const getLastOneEvent = async (...params) => {
-  const events = await getLastEvents(...params, 1);
-  if (events.length === 0)
-    return null;
-  return events[events.length - 1];
 }
 
 export const getLastEvents = async (contract, event, filter, count) => {

@@ -4,11 +4,11 @@ import * as config from '../config';
 
 const useStablePool = () => {
   const vega = useVega();
-  const [stablePool, setStablePool] = useState(null);
+  const [stablePool, setStablePool] = useState<any>(null);
 
   const fetchStablePool = useCallback(async () => {
     try {
-      const _stablePool = await vega.getPoolInfo();
+      const _stablePool = await vega?.getPoolInfo();
       setStablePool(_stablePool);
       console.log("StablePool: ", _stablePool);
     } catch (e) {
@@ -22,6 +22,7 @@ const useStablePool = () => {
       let refreshInterval = setInterval(fetchStablePool, config.refetchInterval);
       return () => clearInterval(refreshInterval);
     }
+    return () => {}
   }, [vega, fetchStablePool]);
 
   return stablePool;

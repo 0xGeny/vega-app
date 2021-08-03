@@ -1,16 +1,15 @@
-import React,{ useState, useEffect } from 'react';
-import warningicon from '../../assets/images/warningicon.png';
+import { useState, useEffect } from 'react';
 import bluesecue from '../../assets/images/bluesecue.png';
 import metamask from '../../assets/images/metamask.png';
 import walletconnect from '../../assets/images/walletconnect.png';
-import {Modal, Button, Form, Card, Image} from 'react-bootstrap';
+import {Modal, Button, Form, Card} from 'react-bootstrap';
 import * as constants from "../../blockchain/constants";
 import { useWallet } from 'use-wallet';
 
 const ConnectModal = (props) => {
   
   const wallet = useWallet();
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string|null>(null);
 
   useEffect(() => {
     if (wallet.status === "connected") {
@@ -24,7 +23,7 @@ const ConnectModal = (props) => {
       56: "BSC Mainnet"
     }
     if (wallet.error) {
-      setError("Try to connect on " + networkNames[constants.chainId] +" network.");
+      setError(`Try to connect on ${networkNames[constants.chainId]} network.`);
       setTimeout(() => {
         setError("");
       }, 4000);

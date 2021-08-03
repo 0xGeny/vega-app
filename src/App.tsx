@@ -4,7 +4,8 @@ import { Container } from 'react-bootstrap';
 import Header from './components/header';
 import Dashboard from './pages/dashboard';
 import VegaProvider from './contexts/VegaProvider';
-import { useWallet, UseWalletProvider } from 'use-wallet';
+import { UseWalletProvider } from 'use-wallet';
+import { NotificationContainer } from 'react-notifications';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Header/>
         <Dashboard/>
       </Container>
+      <NotificationContainer/>
     </Providers>
   );
 }

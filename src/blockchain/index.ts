@@ -6,5 +6,5 @@ BigNumber.config({
   DECIMAL_PLACES: 80,
 });
 
-export { Vega } from './vega.js';
+export { Vega } from './vega';
 export { Web3, BigNumber };

@@ -1,9 +1,11 @@
-import React from 'react';
-import { Card, Container, Form, Row, Button, ButtonGroup } from 'react-bootstrap';
+
+import { Card, Container, Row } from 'react-bootstrap';
 import useBalances from '../hooks/useBalances';
 import useStablePool from '../hooks/useStablePool';
+import Swap from '../components/dashboard/Swap';
+import AccountTransaction from '../components/dashboard/AccountTransaction';
 
-const Dashboard = (props) => {
+const Dashboard = () => {
 
   const balances = useBalances();
   const stablePool = useStablePool();
@@ -12,13 +14,14 @@ const Dashboard = (props) => {
     <Container className="dashboard">
       <Row>
         <Card>
-          <Card.Header>Balances</Card.Header>
+          <Card.Header>Account Balances</Card.Header>
           <Card.Body>
             <table className="balance-table">
               <tbody>
                 <tr><td>BNB</td><td>{balances?.bnb}</td></tr>
                 <tr><td>USDT</td><td>{balances?.usdt}</td></tr>
                 <tr><td>BUSD</td><td>{balances?.busd}</td></tr>
+                <tr><td>LP Shares</td><td>{balances?.lpShare}</td></tr>
               </tbody>
             </table>
           </Card.Body>
@@ -26,7 +29,7 @@ const Dashboard = (props) => {
       </Row>
       <Row className="mt-3">
         <Card>
-          <Card.Header>Stable Pool</Card.Header>
+          <Card.Header>Pool Balacnes</Card.Header>
           <Card.Body>
             <table className="pool-table">
               <tbody>
@@ -38,21 +41,10 @@ const Dashboard = (props) => {
         </Card>
       </Row>
       <Row className="mt-3">
-        <Card>
-          <Card.Header>Swap</Card.Header>
-          <Card.Body>
-            <Form>
-              <Form.Group>
-                <Form.Label>Amount</Form.Label>
-                <Form.Control type="email" placeholder="Enter amount" />
-              </Form.Group>
-              <div className="mt-3 swap-button-group">
-                <Button variant="secondary" className="me-3">Buy</Button>
-                <Button variant="secondary">Sell</Button>
-              </div>
-            </Form>
-          </Card.Body>
-        </Card>
+        <Swap/>
+      </Row>
+      <Row className="mt-3">
+        <AccountTransaction/>
       </Row>
     </Container>
   )

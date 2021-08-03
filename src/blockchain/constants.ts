@@ -8,12 +8,20 @@ export const rpcUrl = {
   56: "https://bsc-dataseed.binance.org/"
 }
 
+export const tokens = {
+  usdt: {
+    deicimals: 6
+  },
+  busd: {
+    deicimals: 18
+  }
+}
+
 export const addresses = {
 
   weth: {
     42: '0xa050886815cfc52a24b9c4ad044ca199990b6690',
     1: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-    42: '0xa050886815cfc52a24b9c4ad044ca199990b6690',
   },
 
   busd: {
@@ -28,6 +36,10 @@ export const addresses = {
 
   pool: {
     56: '0xE37B3e50391259650B08Df023425Bcdcd323c160',
-    97: '0x659361EcAFe9d02d0ACE089F155bA40aF5CD49d9'
+    97: '0x30cD61a3d558136786aAF19B18B4cf1d8865A95e'
+  },
+
+  lpShare: {
+    97: '0x72F315ACa1787883F4D1168eB17A58D8Ca872b22'
   }
 }
